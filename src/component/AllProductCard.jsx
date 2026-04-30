@@ -9,14 +9,15 @@ const AllProductCard = ({ product }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden">
       {/* Left Side Image */}
-      <div className="relative w-full h-64 md:h-full">
+      <figure className="overflow-hidden">
         <Image
           src={product.image}
           alt={product.name}
-          fill
-          className="object-cover"
+          width={500}
+          height={300}
+          className="transition-transform duration-300 ease-in-out hover:scale-105 object-cover w-full h-full"
         />
-      </div>
+      </figure>
 
       {/* Right Side Content */}
       <div className="p-6 flex flex-col justify-between">
@@ -24,9 +25,7 @@ const AllProductCard = ({ product }) => {
           <h2 className="text-2xl font-bold text-gray-800 mb-2">
             {product.name}
           </h2>
-
           <p className="text-sm text-gray-500 mb-2">{product.name}</p>
-
           {/* Rating */}
           <div className="flex items-center gap-2 mb-3">
             <span className="text-orange-500 flex items-center gap-1 text-sm">
