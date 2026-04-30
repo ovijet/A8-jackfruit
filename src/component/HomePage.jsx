@@ -18,7 +18,7 @@ const HomePage = () => {
         <div className="absolute  flex inset-0 bg-black/40 rounded-3xl items-center">
           <div className="text-white px-6 md:px-16 max-w-xl text-left">
             <h1 className="text-3xl md:text-5xl font-bold">
-              Summer Sale <br /> <span className="text-orange-500">50% OFF</span>
+              Summer Sale <br /> <span className="text-orange-500"></span>
             </h1>
 
             <p className="mt-3 text-sm md:text-lg">
