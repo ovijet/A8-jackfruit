@@ -13,10 +13,10 @@ import {
   TextField,
 } from "@heroui/react";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 export default function SignUpPage() {
   const router = useRouter();
-
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -26,13 +26,22 @@ export default function SignUpPage() {
     const password = e.target.password.value;
 
     // console.log(name, email, image);
-    const {data,error} = await authClient.signUp.email({
+    const { data, error } = await authClient.signUp.email({
       name,
       email,
       password,
       image,
     });
-    console.log(data,error);
+    console.log(data, error);
+
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
+    if (data) {
+      toast.success("Sign up successful! Please log in.");
+      router.push("/");
+    }
   };
 
   return (
