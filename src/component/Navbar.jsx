@@ -47,7 +47,7 @@ const Navbar = () => {
         </ul>
 
         <div className="flex gap-4">
-          {
+          {!user && (
             <ul className="flex items-center  text-sm gap-5">
               <li>
                 <NavLink href={"/signup"}>SignUp</NavLink>
@@ -56,23 +56,25 @@ const Navbar = () => {
                 <NavLink href={"/signin"}>SignIn</NavLink>
               </li>
             </ul>
-          }
+          )}
 
-          <div className="flex gap-3">
-            <h1>{user?.name}</h1>
-            <Avatar size="sm">
-              <Avatar.Image
-                alt="John Doe"
-                src={user?.image}
-                referrerPolicy="no-referrer"
-              />
-              <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
-            </Avatar>
+          {user && (
+            <div className="flex gap-3">
+              <h1>{user?.name}</h1>
+              <Avatar size="sm">
+                <Avatar.Image
+                  alt="John Doe"
+                  src={user?.image}
+                  referrerPolicy="no-referrer"
+                />
+                <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
+              </Avatar>
 
-            <Button onClick={handleSignOut} size="sm" variant="danger">
-              SignOut
-            </Button>
-          </div>
+              <Button onClick={handleSignOut} size="sm" className={'bg-orange-400'}>
+                SignOut
+              </Button>
+            </div>
+          )}
         </div>
       </nav>
     </div>
