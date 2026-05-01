@@ -1,11 +1,21 @@
-import React from 'react';
+import AllProductCard from "@/component/AllProductCard";
+import React from "react";
 
-const AllProducts = () => {
-    return (
-        <div>
-            AllProducts
-        </div>
-    );
+const AllProducts = async () => {
+  const res = await fetch("https://a8-jackfruit.vercel.app/data.json");
+  const data = await res.json();
+  console.log(data, "ovi");
+  return (
+    <div>
+      <h1 className="text-center text-3xl font-bold underline">All Products</h1>
+
+      <div className="grid grid-cols-3 gap-3 max-w-7xl mx-auto mt-5">
+        {data.map((product) => (
+          <AllProductCard key={product.id} product={product}></AllProductCard>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default AllProducts;
