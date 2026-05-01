@@ -13,6 +13,7 @@ import {
   TextField,
 } from "@heroui/react";
 import { useRouter } from "next/navigation";
+import { FaGoogle } from "react-icons/fa";
 import { toast } from "react-toastify";
 
 export default function SignUpPage() {
@@ -42,6 +43,12 @@ export default function SignUpPage() {
       toast.success("Sign up successful! Please log in.");
       router.push("/");
     }
+  };
+
+  const handleGoogleSignIn = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
   };
 
   return (
@@ -115,6 +122,10 @@ export default function SignUpPage() {
           </Button>
         </div>
       </Form>
+      <p>or:</p>
+      <Button variant="outline" className={"w-full"}>
+        <FaGoogle /> Sign up with Google
+      </Button>
     </Card>
   );
 }

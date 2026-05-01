@@ -57,7 +57,7 @@ const Navbar = () => {
               </li>
             </ul>
           }
-          {/* {user && ( */}
+
           <div className="flex gap-3">
             <h1>{user?.name}</h1>
             <Avatar size="sm">
@@ -73,7 +73,6 @@ const Navbar = () => {
               SignOut
             </Button>
           </div>
-          {/* )} */}
         </div>
       </nav>
     </div>
