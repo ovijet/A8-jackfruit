@@ -9,7 +9,8 @@ const AllProduct = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch("https://a8-jackfruit.vercel.app/data.json");
+      // const res = await fetch("https://a8-jackfruit.vercel.app/data.json");
+      const res = await fetch("./data.json")
       const result = await res.json();
       setData(result);
     };
