@@ -1,25 +1,11 @@
-"use client";
-
 import AllProductCard from "@/component/AllProductCard";
-import React, { useEffect, useState } from "react";
 
-const AllProducts = () => {
-  // const res = await fetch("https://a8-jackfruit.vercel.app/data.json");
-  // const res = await fetch("./data.json")
-  // const data = await res.json();
-  // console.log(data, "ovi");
-  const [data, setData] = useState([]);
+const AllProducts = async () => {
+  const res = await fetch("https://a8-jackfruit.vercel.app/data.json");
 
-  useEffect(() => {
-    const getData = async () => {
-      // const res = await fetch("https://a8-jackfruit.vercel.app/data.json");
-      const res = await fetch("./data.json");
-      const result = await res.json();
-      setData(result);
-    };
+  const data = await res.json();
+  console.log(data, "ovi");
 
-    getData();
-  }, []);
   return (
     <div>
       <h1 className="text-center text-3xl font-bold underline">All Products</h1>
