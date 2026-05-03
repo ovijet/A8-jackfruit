@@ -1,6 +1,5 @@
 "use client";
 import { authClient } from "@/lib/auth.client";
-// import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import {
   Button,
@@ -18,18 +17,17 @@ import { toast } from "react-toastify";
 
 export default function SignUpPage() {
   const router = useRouter();
+
   const onSubmit = async (e) => {
     e.preventDefault();
 
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    // console.log(name, email, image);
     const { data, error } = await authClient.signIn.email({
       email,
       password,
     });
-    console.log(data, error);
 
     if (error) {
       toast.error(error.message);
@@ -48,10 +46,10 @@ export default function SignUpPage() {
   };
 
   return (
-    <Card className="border mx-auto w-125 py-10 mt-5">
-      <h1 className="text-center text-2xl font-bold">Sign In</h1>
+    <Card className="border mx-auto w-full max-w-md px-4 sm:px-6 py-8 mt-6">
+      <h1 className="text-center text-xl sm:text-2xl font-bold">Sign In</h1>
 
-      <Form className="flex w-96 mx-auto flex-col gap-4" onSubmit={onSubmit}>
+      <Form className="flex w-full flex-col gap-4 mt-4" onSubmit={onSubmit}>
         <TextField
           isRequired
           name="email"
@@ -60,7 +58,6 @@ export default function SignUpPage() {
             if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
               return "Please enter a valid email address";
             }
-
             return null;
           }}
         >
@@ -84,7 +81,6 @@ export default function SignUpPage() {
             if (!/[0-9]/.test(value)) {
               return "Password must contain at least one number";
             }
-
             return null;
           }}
         >
@@ -96,21 +92,24 @@ export default function SignUpPage() {
           <FieldError />
         </TextField>
 
-        <div className="flex gap-2">
-          <Button type="submit">
+        {/* Buttons */}
+        <div className="flex flex-col sm:flex-row gap-2">
+          <Button type="submit" className="w-full">
             <Check />
             Submit
           </Button>
-          <Button type="reset" variant="secondary">
+          <Button type="reset" variant="secondary" className="w-full">
             Reset
           </Button>
         </div>
       </Form>
-      <p>or:</p>
+
+      <p className="text-center my-3 text-sm">or</p>
+
       <Button
         onClick={handleGoogleSignIn}
         variant="outline"
-        className={"w-full"}
+        className="w-full flex items-center justify-center gap-2"
       >
         <FaGoogle /> Sign in with Google
       </Button>

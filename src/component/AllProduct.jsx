@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import AllProductCard from "./AllProductCard";
+import TopProductMarquee from "./TopProductMarquee";
 
 const AllProduct = () => {
   const [data, setData] = useState([]);
@@ -10,7 +11,7 @@ const AllProduct = () => {
   useEffect(() => {
     const getData = async () => {
       // const res = await fetch("https://a8-jackfruit.vercel.app/data.json");
-      const res = await fetch("./data.json")
+      const res = await fetch("./data.json");
       const result = await res.json();
       setData(result);
     };
@@ -26,6 +27,8 @@ const AllProduct = () => {
         All Products
       </h1>
 
+      <TopProductMarquee />
+
       {/* View All Button */}
       <div className="flex justify-end max-w-7xl mx-auto mt-4">
         <button
@@ -37,7 +40,7 @@ const AllProduct = () => {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 max-w-7xl mx-auto mt-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 max-w-7xl mx-auto mt-5">
         {visibleData.map((product) => (
           <AllProductCard key={product.id} product={product} />
         ))}
