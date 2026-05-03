@@ -5,6 +5,9 @@ const AllProducts = async () => {
 
   const data = await res.json();
   console.log(data, "ovi");
+  if (!data) {
+    return <p>loding.......</p>;
+  }
 
   return (
     <div>

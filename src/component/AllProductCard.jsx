@@ -5,18 +5,29 @@ import React from "react";
 import { FaStar } from "react-icons/fa";
 import { FaStarHalfAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
-import { Card } from "@heroui/react";
+import { Card, Chip } from "@heroui/react";
 
 const AllProductCard = ({ product }) => {
   // console.log(product.id);
-  const { name, image, price, rating } = product;
+  const { name, image, price, rating, category } = product;
+
+  const getCategoryColor = (category) => {
+    if (category === "Accessories") return "bg-green-500";
+    if (category === "Footwear") return "bg-[#572611]";
+    if (category === "Electronics") return "bg-[#9D8F7F]";
+    if (category === "Skincare") return "bg-[#D6764B]";
+    return "bg-gray-500";
+  };
+  if (product.length===0) {
+    return <span className="loading loading-spinner loading-md mx-auto"></span>;
+  }
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.4 }}
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 bg-white h-full rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden">
+      <div className="grid grid-cols-1 md:grid-cols-2 bg-white h-full relative rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden">
         {/* Left Side Image */}
         <figure className="overflow-hidden">
           <Image
@@ -27,6 +38,11 @@ const AllProductCard = ({ product }) => {
             className="transition-transform duration-300 ease-in-out hover:scale-105 object-cover w-full h-full"
           />
         </figure>
+        <Chip
+          className={`absolute top-4 left-4 ${getCategoryColor(category)} text-white`}
+        >
+          {category}
+        </Chip>
 
         {/* Right Side Content */}
         <div className="p-6 flex flex-col justify-between">

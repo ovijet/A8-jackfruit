@@ -21,6 +21,10 @@ const AllProduct = () => {
 
   const visibleData = showAll ? data.slice(0, 6) : data.slice(0, 3);
 
+  if (data.length === 0) {
+    return <span className="loading loading-spinner loading-md mx-auto"></span>;
+  }
+
   return (
     <div>
       <h1 className="text-3xl font-bold text-center mt-10 underline">

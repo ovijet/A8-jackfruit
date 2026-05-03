@@ -1,3 +1,4 @@
+import { Chip } from "@heroui/react";
 import Image from "next/image";
 import React from "react";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
@@ -10,8 +11,19 @@ const page = async ({ params }) => {
   console.log(product);
   const { name, image, price, rating, brand, description, category, stock } =
     product;
+  if (!product) {
+    return <p>Product not found</p>;
+  }
+
+  const getCategoryColor = (category) => {
+    if (category === "Accessories") return "bg-green-500";
+    if (category === "Footwear") return "bg-orange-500";
+    if (category === "Electronics") return "bg-yellow-500";
+    if (category === "Skincare") return "bg-[#D6764B]";
+    return "bg-gray-500";
+  };
   return (
-    <div className="card lg:card-side bg-base-100 h-[60vh] space-y-5 shadow-sm mt-10 max-w-7xl mx-auto">
+    <div className="card lg:card-side bg-base-100 h-[60vh] space-y-5 relative shadow-sm mt-10 max-w-7xl mx-auto">
       <figure className="overflow-hidden">
         <Image
           src={image}
@@ -21,6 +33,9 @@ const page = async ({ params }) => {
           className="transition-transform duration-300 ease-in-out hover:scale-105 object-cover w-full h-full"
         />
       </figure>
+      <Chip className={`absolute top-4 left-4 mt-2 ml-1 ${getCategoryColor(category)} text-white`}>
+        {category}
+      </Chip>
       <div className="p-6 flex flex-col justify-between">
         <div className="space-y-3">
           <h2 className="text-2xl font-bold text-gray-800 mb-2">{name}</h2>
