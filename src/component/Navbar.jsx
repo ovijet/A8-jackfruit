@@ -42,7 +42,7 @@ const Navbar = () => {
               <NavLink href="/all-product">All Products</NavLink>
             </li>
             <li>
-              <NavLink href="/profile">Profile</NavLink>
+              <NavLink href="/profile">My Profile</NavLink>
             </li>
           </ul>
 
