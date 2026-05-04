@@ -6,19 +6,19 @@ import { motion, AnimatePresence } from "framer-motion";
 const slides = [
   {
     id: 1,
-    image: "/jackfruit.jpg",
+    image: "/sunBanner.png",
     title: "Summer Sale 50% OFF",
     desc: "Hot deals on sunglasses & outfits",
   },
   {
     id: 2,
-    image: "/jackfruit2.jpg",
+    image: "/sunBanner2.png",
     title: "Beach Essentials",
     desc: "Get ready for beach vibes",
   },
   {
     id: 3,
-    image: "/jackfruit3.jpg",
+    image: "/sunBanner2.png",
     title: "Skincare Collection",
     desc: "Stay fresh this summer",
   },
@@ -54,7 +54,7 @@ const HomePage = () => {
               src={current.image}
               alt="slide"
               fill
-              className="object-cover"
+              className="object-fit-cover"
             />
 
             {/* overlay */}

@@ -105,6 +105,9 @@ export default function SignUpPage() {
       </Form>
 
       <p className="text-center my-3 text-sm">or</p>
+      <Button className="w-full" onClick={() => router.push("/signup")}>
+        Don't have an account? Sign Up
+      </Button>
 
       <Button
         onClick={handleGoogleSignIn}
